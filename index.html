@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PULSE | The Wellness Café, Mumbai</title>
+<meta name="description" content="PULSE is a fresh-daily wellness café in Mumbai with an AI engine that builds a drink around your health goal.">
+<meta name="theme-color" content="#0E2F25">
+<meta property="og:title" content="PULSE | The Wellness Café, Mumbai">
+<meta property="og:description" content="Cold-pressed juices, protein shakes and herbal teas, made fresh daily, with an AI engine that builds a drink around your health goal.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --deep:#0E2F25; --green:#1F6B52; --leaf:#2FA377; --paper:#F7F9F5; --white:#fff;
+  --mint:#E7F1EA; --ink:#14291F; --muted:#546760; --line:#D9E5DD;
+  --coral:#D14B3B; --coral-lt:#F0705F; --gold:#FFD54F; --berry:#B83A6B; --amber:#E0900B;
+  --display:'Bricolage Grotesque',system-ui,sans-serif; --body:'Figtree',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--body);font-size:1.0625rem;line-height:1.65;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+:focus-visible{outline:3px solid var(--coral-lt);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--display);line-height:1.1;letter-spacing:-.02em;color:var(--deep)}
+h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;max-width:18ch}
+h3{font-size:1.25rem;font-weight:700}
+.lead{color:var(--muted);max-width:60ch;margin-top:18px;font-size:1.125rem}
+section{padding:112px 0}
+.tag{display:inline-block;font-size:.9rem;font-weight:600;color:var(--green);margin-bottom:16px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border-radius:10px;font-weight:600;font-size:1rem;transition:background .2s,color .2s,border-color .2s}
+.btn-coral{background:var(--coral);color:#fff}.btn-coral:hover{background:#B83E2F}
+.btn-line{border:1.5px solid rgba(255,255,255,.55);color:#fff}.btn-line:hover{background:#fff;color:var(--deep)}
+.btn-dark{background:var(--deep);color:#fff}.btn-dark:hover{background:var(--green)}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(14,47,37,.96);backdrop-filter:blur(10px);color:#fff}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:800;font-size:1.25rem;letter-spacing:.02em}
+.brand img{width:38px;height:38px}
+.nav ul{display:flex;gap:30px;font-size:.95rem;font-weight:500;color:#cfe3d8}
+.nav ul a{padding:6px 0;border-bottom:2px solid transparent;transition:color .2s,border-color .2s}
+.nav ul a:hover{color:#fff;border-color:var(--coral-lt)}
+.nav .btn{min-height:40px;padding:0 18px;font-size:.92rem}
+.menu-btn{display:none;background:none;border:1.5px solid rgba(255,255,255,.4);color:#fff;border-radius:8px;width:44px;height:44px;font-size:1.3rem;cursor:pointer}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;position:relative;overflow:hidden;padding:104px 0 150px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:center;position:relative;z-index:2}
+.hero h1{color:#fff;font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;max-width:13ch}
+.hero p.sub{color:#bcd7ca;font-size:1.2rem;max-width:46ch;margin:26px 0 36px}
+.hero .btns{display:flex;gap:14px;flex-wrap:wrap}
+.hero .where{margin-top:34px;font-size:.95rem;color:#8fb2a2}
+.ecg{position:absolute;left:0;right:0;bottom:34px;width:100%;height:120px;z-index:1;pointer-events:none}
+.ecg path{fill:none;stroke:var(--coral-lt);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.5,0,.2,1) .3s forwards}
+.ecg .ghost{stroke:rgba(255,255,255,.09);stroke-dashoffset:0;animation:none}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+/* chat demo */
+.phone{background:#fff;color:var(--ink);border-radius:28px;padding:22px;max-width:360px;margin-left:auto;box-shadow:0 40px 80px rgba(0,0,0,.35)}
+.phone .bar{display:flex;align-items:center;gap:10px;padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--line);font-weight:600;font-size:.95rem}
+.phone .bar img{width:26px}
+.bubble{background:var(--green);color:#fff;border-radius:16px 16px 4px 16px;padding:12px 14px;font-size:.95rem;margin-left:34px;min-height:3.2em}
+.result{margin-top:16px;border:1px solid var(--line);border-radius:16px;padding:16px;background:var(--mint)}
+.result .nm{font-family:var(--display);font-weight:700;font-size:1.2rem;color:var(--deep)}
+.macros{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.macros div{background:#fff;border-radius:10px;padding:8px 6px;text-align:center;font-size:.78rem;color:var(--muted);line-height:1.3}
+.macros b{display:block;font-family:var(--display);font-size:1.2rem;color:var(--deep)}
+.safe{font-size:.88rem;color:var(--green);font-weight:600}
+.confirm{margin-top:12px;background:var(--deep);color:#fff;text-align:center;border-radius:10px;padding:10px;font-weight:600;font-size:.95rem}
+.demo-note{text-align:center;font-size:.78rem;color:var(--muted);margin-top:12px}
+.js .result{opacity:0;transform:translateY(8px)}
+.js .result.show{opacity:1;transform:none;transition:opacity .5s,transform .5s}
+
+/* facts band */
+.facts{background:var(--white);border-bottom:1px solid var(--line)}
+.facts .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.fact{padding:34px 28px;border-left:1px solid var(--line)}
+.fact:first-child{border-left:0;padding-left:0}
+.fact b{display:block;font-family:var(--display);font-size:2.1rem;font-weight:800;color:var(--deep);letter-spacing:-.02em;line-height:1.1}
+.fact span{color:var(--muted);font-size:.95rem}
+
+/* about */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:56px}
+.about-grid .statement{padding-top:22px;border-top:3px solid var(--deep)}
+.about-grid .statement.m{border-color:var(--coral)}
+.about-grid h3{font-size:1.1rem;color:var(--muted);font-family:var(--body);font-weight:600;letter-spacing:0;margin-bottom:10px}
+.about-grid p{font-family:var(--display);font-size:1.5rem;line-height:1.3;font-weight:500;letter-spacing:-.01em;color:var(--deep)}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:72px;border-top:1px solid var(--line)}
+.value{padding:28px 28px 0 0}
+.value h3{font-size:1.1rem;margin-bottom:6px}
+.value p{color:var(--muted);font-size:.97rem}
+
+/* ai */
+.ai{background:var(--deep);color:#fff}
+.ai h2{color:#fff}.ai .lead{color:#a9c8ba}.ai .tag{color:var(--gold)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;position:relative}
+.steps:before{content:"";position:absolute;left:0;right:0;top:19px;height:2px;background:linear-gradient(90deg,var(--coral-lt),rgba(240,112,95,.15))}
+.step{padding-right:30px;position:relative}
+.step .n{width:40px;height:40px;border-radius:50%;background:var(--coral);color:#fff;display:grid;place-items:center;font-family:var(--display);font-weight:800;margin-bottom:22px;position:relative;box-shadow:0 0 0 6px var(--deep)}
+.step h3{color:#fff;font-size:1.2rem;margin-bottom:8px}
+.step p{color:#a9c8ba;font-size:.97rem}
+.protect{margin-top:80px;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;padding:44px;border:1px solid rgba(255,255,255,.16);border-radius:20px;background:rgba(255,255,255,.03)}
+.protect h3{color:var(--gold);font-size:1.6rem;margin-bottom:12px}
+.protect p{color:#bcd7ca}
+.protect li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);color:#d8eadf}
+.protect li:last-child{border:0}
+.protect li b{min-width:92px;color:#fff;font-weight:600}
+
+/* menu */
+.menu-board{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.cat{padding:34px 28px 38px;border-left:1px solid var(--line);position:relative}
+.cat:first-child{border-left:0}
+.cat:before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--c)}
+.cat h3{font-size:1.3rem;margin-bottom:4px}
+.cat .price{font-weight:600;color:var(--c);filter:brightness(.82);margin-bottom:20px}
+.cat li{padding:10px 0;border-top:1px solid var(--line);font-size:1rem}
+.menu-note{margin-top:22px;color:var(--muted)}
+
+/* compare */
+.compare{background:var(--white)}
+.table{margin-top:48px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+table{width:100%;border-collapse:collapse;font-size:1rem}
+th{background:var(--deep);color:#fff;text-align:left;padding:16px 22px;font-weight:600}
+th:last-child{background:var(--green)}
+td{padding:20px 22px;border-top:1px solid var(--line);vertical-align:top}
+td:first-child{font-weight:600;color:var(--deep);width:24%}
+td:last-child{background:var(--mint);font-weight:600;color:var(--deep)}
+
+/* roadmap */
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:56px}
+.q{border-top:3px solid var(--c);padding-top:20px}
+.q small{display:block;font-family:var(--display);font-weight:800;font-size:1.7rem;color:var(--c);filter:brightness(.85);margin-bottom:6px}
+.q h3{margin-bottom:8px}
+.q p{color:var(--muted);font-size:.97rem}
+
+/* team */
+.team{background:var(--white)}
+.people{display:grid;grid-template-columns:repeat(4,1fr);gap:40px;margin-top:56px}
+.person img{width:132px;height:132px;border-radius:50%;object-fit:cover;background:var(--mint);margin-bottom:20px}
+.person h3{font-size:1.2rem}
+.role{color:var(--coral);font-weight:600;font-size:.95rem;margin:2px 0 10px}
+.person p{color:var(--muted);font-size:.97rem}
+.person a.mail{display:inline-block;margin-top:12px;font-size:.9rem;color:var(--green);font-weight:500;word-break:break-all;border-bottom:1px solid transparent}
+.person a.mail:hover{border-color:var(--green)}
+
+/* resources */
+.docs{margin-top:48px;border-top:1px solid var(--line)}
+.doc{display:grid;grid-template-columns:56px 1fr auto;gap:22px;align-items:center;padding:26px 8px;border-bottom:1px solid var(--line);transition:background .2s}
+.doc:hover{background:var(--white)}
+.doc .ico{width:56px;height:56px;border-radius:14px;background:var(--deep);display:grid;place-items:center;color:var(--gold);font-family:var(--display);font-weight:800;font-size:.85rem}
+.doc h3{font-size:1.25rem}
+.doc p{color:var(--muted);font-size:.97rem}
+.doc .go{font-weight:600;color:var(--coral);white-space:nowrap}
+
+/* footer */
+footer{background:var(--deep);color:#a9c8ba;padding:80px 0 30px;font-size:.98rem}
+footer .grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:56px}
+footer .brand{color:#fff;margin-bottom:16px}
+footer h4{color:#fff;font-family:var(--body);font-size:1rem;margin-bottom:14px}
+footer li{padding:4px 0}
+footer a:hover{color:#fff}
+footer .motto{font-family:var(--display);color:#fff;font-size:1.3rem;font-weight:700;margin-bottom:14px}
+.copy{margin-top:56px;padding-top:22px;border-top:1px solid rgba(255,255,255,.14);font-size:.85rem;color:#7fa493}
+
+/* responsive */
+@media(max-width:980px){
+  section{padding:84px 0}
+  .hero{padding:72px 0 170px}
+  .hero .wrap{grid-template-columns:1fr;gap:48px}
+  .phone{margin:0 auto}
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-left:0;padding-left:0}
+  .fact{border-top:1px solid var(--line)}.fact:nth-child(-n+2){border-top:0}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .values{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr;row-gap:44px}.steps:before{display:none}
+  .protect{grid-template-columns:1fr;padding:30px}
+  .menu-board{grid-template-columns:1fr 1fr}
+  .cat:nth-child(3){border-left:0}.cat:nth-child(n+3){border-top:1px solid var(--line)}
+  .road{grid-template-columns:1fr 1fr}
+  .people{grid-template-columns:1fr 1fr}
+  footer .grid{grid-template-columns:1fr;gap:36px}
+}
+@media(max-width:860px){
+  .menu-btn{display:block}
+  .nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--deep);flex-direction:column;gap:0;padding:8px 28px 20px;border-top:1px solid rgba(255,255,255,.12)}
+  .nav ul.open{display:flex}
+  .nav ul a{display:block;padding:14px 0}
+  .nav .btn{display:none}
+}
+@media(max-width:620px){
+  .wrap{padding:0 20px}
+  .values,.steps,.menu-board,.road{grid-template-columns:1fr}
+  .cat{border-left:0;border-top:1px solid var(--line)}.cat:first-child{border-top:0}
+  .facts .wrap{grid-template-columns:1fr 1fr}.fact{padding:24px 14px}.fact b{font-size:1.6rem}
+  .people{grid-template-columns:1fr}
+  .doc{grid-template-columns:48px 1fr;gap:16px}.doc .ico{width:48px;height:48px}.doc .go{grid-column:2}
+  table,thead,tbody,tr,th,td{display:block}
+  thead{display:none}
+  tr{border-top:1px solid var(--line);padding:16px 0}
+  td{border:0;padding:4px 20px}td:first-child{width:auto;font-size:1.1rem}
+  td:nth-child(2):before{content:"They offer: ";color:var(--muted);font-weight:500}
+  td:last-child{background:none}td:last-child:before{content:"PULSE: ";color:var(--coral)}
+  .phone{padding:18px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .ecg path{animation:none;stroke-dashoffset:0}
+  .js .result{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="assets/logo.webp" alt="" width="38" height="38">PULSE</a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" id="mb">&#9776;</button>
+    <ul id="links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#ai">Our AI</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#roadmap">Roadmap</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn-coral" href="https://drive.google.com/file/d/1Bif0P6sl00g-k-OLa5zUOkRmb8ACisHa/view?usp=sharing" target="_blank" rel="noopener">Watch the video</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <svg class="ecg" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true">
+    <path class="ghost" d="M0 60H520L548 60L566 22L596 100L622 6L650 60H900L920 60L934 44L954 76L968 60H1440"/>
+    <path pathLength="1" d="M0 60H520L548 60L566 22L596 100L622 6L650 60H900L920 60L934 44L954 76L968 60H1440"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1>A café that builds your drink around you.</h1>
+      <p class="sub">Cold-pressed juices, protein shakes, herbal teas and clean-label snacks, made fresh every morning. Tell our AI your health goal and get a drink matched to it in seconds.</p>
+      <div class="btns">
+        <a class="btn btn-coral" href="#menu">See the menu</a>
+        <a class="btn btn-line" href="#ai">How the AI works</a>
+      </div>
+      <p class="where">Mumbai. Pilot outlet in planning.</p>
+    </div>
+    <div>
+      <div class="phone" aria-label="Example of the PULSE ordering assistant">
+        <div class="bar"><img src="assets/logo.webp" alt="" width="26" height="26">PULSE assistant</div>
+        <div class="bubble" id="typed" aria-live="polite">Something high-protein, low-sugar and nut-free for after a workout</div>
+        <div class="result" id="result">
+          <div class="nm">Berry Boost</div>
+          <div class="macros"><div><b>28 g</b>protein</div><div><b>9 g</b>sugar</div><div><b>310</b>kcal</div></div>
+          <div class="safe">&#10003; Nut-free check passed</div>
+          <div class="confirm">Confirm for &#8377;275</div>
+        </div>
+        <p class="demo-note">Illustrative example</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><b>14</b><span>menu items, each with a nutrition label</span></div>
+    <div class="fact"><b>&#8377;120 to &#8377;290</b><span>price range</span></div>
+    <div class="fact"><b>Daily</b><span>pressed fresh, no concentrates</span></div>
+    <div class="fact"><b>5 outlets</b><span>planned by Year 4</span></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <span class="tag">About PULSE</span>
+    <h2>Healthy, done right.</h2>
+    <p class="lead">Most cafés put indulgence first, and most nutrition apps only tell you what to eat. PULSE does both jobs: it recommends the right drink for your goal and makes it fresh in an open kitchen.</p>
+    <div class="about-grid">
+      <div class="statement"><h3>Our vision</h3><p>To become India&rsquo;s most trusted wellness café brand, where every drink is fresh, transparent and matched to the person drinking it.</p></div>
+      <div class="statement m"><h3>Our mission</h3><p>To make healthy eating and drinking as appealing, convenient and social as a regular café visit, and to use AI to remove the guesswork of matching food to a personal health goal.</p></div>
+    </div>
+    <div class="values">
+      <div class="value"><h3>Fresh daily</h3><p>Pressed every morning. No concentrates.</p></div>
+      <div class="value"><h3>Nothing hidden</h3><p>Clean-label recipes and an open kitchen.</p></div>
+      <div class="value"><h3>Personalised</h3><p>A drink built around your goal.</p></div>
+      <div class="value"><h3>Safety first</h3><p>Allergy rules run before any suggestion.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ai" id="ai">
+  <div class="wrap">
+    <span class="tag">The PULSE AI nutrition engine</span>
+    <h2>Say your goal. We build the drink.</h2>
+    <p class="lead">Type or speak what you need. The engine checks safety first, then designs the best-fit recipe with exact quantities and a live nutrition label.</p>
+    <ol class="steps" style="list-style:none">
+      <li class="step"><div class="n">1</div><h3>Tell us your goal</h3><p>&ldquo;High-protein, low-sugar, post-workout.&rdquo; Chat or voice, in plain language.</p></li>
+      <li class="step"><div class="n">2</div><h3>Safety filter runs first</h3><p>Allergen and diet rules (nut, dairy, gluten, diabetic-friendly) apply before anything is ranked.</p></li>
+      <li class="step"><div class="n">3</div><h3>Recipe built to your numbers</h3><p>Quantities are tuned to your protein, sugar and calorie targets, with calories, macros and glycemic load shown.</p></li>
+      <li class="step"><div class="n">4</div><h3>Made fresh, smarter each time</h3><p>The kitchen blends it to the recipe card. Ratings and repeat orders refine your next pick.</p></li>
+    </ol>
+    <div class="protect">
+      <div><h3>Protected innovation</h3><p>The AI system is the heart of PULSE, and we are protecting it. The engine that combines safety filtering, goal-based recipe generation and live nutrition calculation is the subject of our patent application.</p></div>
+      <ul>
+        <li><b>Patent</b><span>Application for the AI nutrition engine</span></li>
+        <li><b>Trademark</b><span>PULSE brand, filed in 5 classes</span></li>
+        <li><b>Copyright</b><span>Menu and Recipe Book</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <span class="tag">The menu</span>
+    <h2>Fourteen items. No guesswork.</h2>
+    <p class="lead">Every item has a recipe card with exact quantities, nutrition per serving and an allergen guide.</p>
+    <div class="menu-board">
+      <div class="cat" style="--c:#2FA377"><h3>Cold-pressed juices</h3><div class="price">&#8377;160 to &#8377;190</div><ul><li>Green Pulse</li><li>Beet Beat</li><li>Sunrise Zing</li><li>Detox Dew</li></ul></div>
+      <div class="cat" style="--c:#B83A6B"><h3>Protein shakes</h3><div class="price">&#8377;220 to &#8377;270</div><ul><li>Peanut Power Shake</li><li>Berry Recovery</li><li>Mango Lassi Lite</li><li>Choco-Date Vegan Shake</li></ul></div>
+      <div class="cat" style="--c:#1F6B52"><h3>Herbal teas</h3><div class="price">&#8377;120 to &#8377;170</div><ul><li>Tulsi Ginger Calm</li><li>Hibiscus Mint Cooler</li><li>Moonlight Masala Chai</li></ul></div>
+      <div class="cat" style="--c:#E0900B"><h3>Snacks and bowls</h3><div class="price">&#8377;150 to &#8377;290</div><ul><li>Oat &amp; Date Energy Bites</li><li>Hummus &amp; Veggie Box</li><li>Quinoa Protein Bowl</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="compare" id="why">
+  <div class="wrap">
+    <span class="tag">Why PULSE</span>
+    <h2>How we compare</h2>
+    <div class="table">
+      <table>
+        <thead><tr><th>Alternative</th><th>What they do well</th><th>The PULSE edge</th></tr></thead>
+        <tbody>
+          <tr><td>Juice and smoothie bars</td><td>Familiar fresh juices and shakes</td><td>AI-built drinks, in a café you want to stay in</td></tr>
+          <tr><td>Mainstream cafés</td><td>Reach, ambience, loyal habits</td><td>A genuinely healthy menu with transparent nutrition</td></tr>
+          <tr><td>Nutrition and fitness apps</td><td>Personalised plans and tracking</td><td>We recommend and make the drink at the point of order</td></tr>
+          <tr><td>Home-made and packaged drinks</td><td>Cheap and convenient</td><td>Fresh daily, made to your goal, no prep for you</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <div class="wrap">
+    <span class="tag">Roadmap</span>
+    <h2>Our first year</h2>
+    <div class="road">
+      <div class="q" style="--c:#2FA377"><small>Q1</small><h3>Set up and soft launch</h3><p>Licences, IP filings, pilot outlet and a rules-based app.</p></div>
+      <div class="q" style="--c:#E0900B"><small>Q2</small><h3>Build footfall</h3><p>Grand launch, gym and campus tie-ups, delivery apps.</p></div>
+      <div class="q" style="--c:#B83A6B"><small>Q3</small><h3>Switch on the AI</h3><p>AI build-your-own, pricing test and smart suggestions.</p></div>
+      <div class="q" style="--c:#D14B3B"><small>Q4</small><h3>Prepare to grow</h3><p>Review results, scout outlet 2 and talk to B2B partners.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="team" id="team">
+  <div class="wrap">
+    <span class="tag">The team</span>
+    <h2>The people behind PULSE</h2>
+    <p class="lead">Four directors from SPIT, Mumbai, covering operations, technology, brand and finance.</p>
+    <div class="people">
+      <article class="person"><img src="assets/samruddhi.webp" alt="Samruddhi Kulkarni" width="132" height="132" loading="lazy"><h3>Samruddhi Kulkarni</h3><div class="role">Founder &amp; CEO</div><p>Sets the vision, leads product and brand, and shapes the look and feel of the menu and app.</p><a class="mail" href="mailto:samruddhi.kulkarni25@spit.ac.in">samruddhi.kulkarni25@spit.ac.in</a></article>
+      <article class="person"><img src="assets/khushi.webp" alt="Khushi Kumari" width="132" height="132" loading="lazy"><h3>Khushi Kumari</h3><div class="role">Managing Director, Operations</div><p>Runs outlet operations, supplier relationships and the launch plan.</p><a class="mail" href="mailto:khushii.kumari25@spit.ac.in">khushii.kumari25@spit.ac.in</a></article>
+      <article class="person"><img src="assets/rudra.webp" alt="Rudra Bakhriya" width="132" height="132" loading="lazy"><h3>Rudra Bakhriya</h3><div class="role">Director, Technology &amp; AI</div><p>Owns the AI nutrition engine, the ordering app and the data pipeline.</p><a class="mail" href="mailto:rudra.bakhriya25@spit.ac.in">rudra.bakhriya25@spit.ac.in</a></article>
+      <article class="person"><img src="assets/gargi.webp" alt="Gargi Sabde" width="132" height="132" loading="lazy"><h3>Gargi Sabde</h3><div class="role">Director, Marketing &amp; Finance</div><p>Runs marketing, partnerships and the financial plan.</p><a class="mail" href="mailto:gargi.sabde25@spit.ac.in">gargi.sabde25@spit.ac.in</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <span class="tag">Resources</span>
+    <h2>Documents and video</h2>
+    <div class="docs">
+      <a class="doc" href="https://drive.google.com/file/d/1dG0wqoJZxk1KXC58vdCT9c0EzZw-qNgZ/view?usp=sharing" target="_blank" rel="noopener"><div class="ico">PDF</div><div><h3>Startup profile</h3><p>Company overview, team and executive summary.</p></div><span class="go">Open PDF</span></a>
+      <a class="doc" href="https://drive.google.com/file/d/1nc-nq4bZjVFI_M-IoUjIPblndTq5pezD/view?usp=sharing" target="_blank" rel="noopener"><div class="ico">PDF</div><div><h3>Brochure</h3><p>A two-page overview of PULSE.</p></div><span class="go">Open PDF</span></a>
+      <a class="doc" href="https://drive.google.com/file/d/1Bif0P6sl00g-k-OLa5zUOkRmb8ACisHa/view?usp=sharing" target="_blank" rel="noopener"><div class="ico">Video</div><div><h3>Promotional video</h3><p>A short look at PULSE, hosted on Google Drive.</p></div><span class="go">Watch video</span></a>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="brand"><img src="assets/logo.webp" alt="" width="38" height="38">PULSE, The Wellness Café</div>
+        <p class="motto">Eat well. Feel it. Be seen doing it.</p>
+        <p>Sardar Patel Institute of Technology, Bhavan&rsquo;s Campus, Munshi Nagar, Andheri (W), Mumbai 400058, Maharashtra, India</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="#about">About</a></li><li><a href="#ai">Our AI</a></li><li><a href="#menu">Menu</a></li><li><a href="#team">Team</a></li><li><a href="#resources">Resources</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="mailto:samruddhi.kulkarni25@spit.ac.in">samruddhi.kulkarni25@spit.ac.in</a></li><li><a href="mailto:khushii.kumari25@spit.ac.in">khushii.kumari25@spit.ac.in</a></li></ul></div>
+    </div>
+    <p class="copy">&copy; 2026 PULSE, The Wellness Café. Academic venture project, EIPR (MC526), SPIT Mumbai. Financial figures are illustrative.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var mb=document.getElementById('mb'),ul=document.getElementById('links');
+  mb.addEventListener('click',function(){var o=ul.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+  ul.addEventListener('click',function(e){if(e.target.tagName==='A'){ul.classList.remove('open');mb.setAttribute('aria-expanded',false)}});
+  var t=document.getElementById('typed'),r=document.getElementById('result');
+  var msg=t.textContent;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('show');return}
+  t.textContent='';var i=0;
+  setTimeout(function type(){
+    if(i<=msg.length){t.textContent=msg.slice(0,i++);setTimeout(type,28)}
+    else setTimeout(function(){r.classList.add('show')},500);
+  },1800);
+})();
+</script>
+</body>
+</html>
